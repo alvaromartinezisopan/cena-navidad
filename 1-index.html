@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cena de Navidad 2026 · Isopan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#007397;
+    --teal-dark:#005a78;
+    --teal-soft:#e6f3f7;
+    --ink:#1e293b;
+    --slate:#64748b;
+    --gold:#c9a227;
+    --gold-soft:#fdf6e3;
+    --red:#b3342c;
+    --line:#e2e8f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+    background:#ffffff;
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .stage{
+    position:relative;
+    width:100vw;height:100vh;
+    display:flex;flex-direction:column;
+    padding:3.2vh 3.4vw;
+  }
+
+  /* ---------- decor ---------- */
+  .snow{position:absolute;color:#dcebf1;pointer-events:none;z-index:0;}
+  .flake{display:none;position:absolute;pointer-events:none;z-index:0;opacity:.9;}
+  .snow.s1{top:2.5vh;right:22vw;width:5.2vh;height:5.2vh;}
+  .snow.s2{bottom:4vh;left:20vw;width:4vh;height:4vh;color:#e9f2f6;}
+  .snow.s3{top:16vh;left:2vw;width:3.4vh;height:3.4vh;color:#eef5f8;}
+  .snow.s4{bottom:8vh;right:3vw;width:4.4vh;height:4.4vh;}
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    z-index:1;flex:0 0 auto;
+  }
+  header img{height:7.2vh;display:block;}
+  .eyebrow{
+    font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teal);font-size:2.1vh;
+    display:flex;align-items:center;gap:1.2vh;
+  }
+  .eyebrow svg{width:2.6vh;height:2.6vh;color:var(--gold);}
+
+  /* ---------- main ---------- */
+  main{
+    flex:1 1 auto;display:flex;align-items:center;gap:3.4vw;
+    z-index:1;min-height:0;
+  }
+  .left{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2.6vh;}
+  h1{
+    font-size:7.6vh;line-height:1.04;font-weight:800;letter-spacing:-.01em;
+  }
+  h1 .accent{color:var(--teal);}
+  .tagline{
+    font-size:2.5vh;color:var(--slate);font-weight:500;max-width:60ch;
+  }
+  .tagline b{color:var(--ink);font-weight:700;}
+
+  .facts{display:flex;gap:1.6vw;}
+  .fact{
+    flex:1 1 0;background:#fff;border:.22vh solid var(--line);
+    border-radius:1.6vh;padding:1.8vh 1.4vw;
+    display:flex;align-items:center;gap:1.4vh;
+  }
+  .fact .ic{
+    flex:0 0 auto;width:5.4vh;height:5.4vh;border-radius:1.2vh;
+    background:var(--teal-soft);color:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .fact .ic svg{width:3vh;height:3vh;}
+  .fact .k{font-size:1.7vh;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+  .fact .v{font-size:2.7vh;font-weight:800;line-height:1.15;}
+  .fact .v small{font-size:1.9vh;font-weight:700;color:var(--slate);}
+  .fact .v small.br{display:block;}
+
+  .deadline{
+    display:flex;align-items:center;gap:1.6vh;
+    background:var(--gold-soft);border:.24vh solid var(--gold);
+    border-radius:1.6vh;padding:1.7vh 1.6vw;
+  }
+  .deadline .ic{
+    flex:0 0 auto;width:5.2vh;height:5.2vh;border-radius:50%;
+    background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;
+  }
+  .deadline .ic svg{width:2.9vh;height:2.9vh;}
+  .deadline .t{font-size:2.5vh;font-weight:800;}
+  .deadline .t .short{display:none;}
+  .deadline .t small{display:block;font-size:1.9vh;font-weight:600;color:#8a6d14;}
+
+  .how{display:flex;gap:1.6vw;}
+  .how .card{
+    flex:1 1 0;border-radius:1.6vh;padding:1.6vh 1.4vw;
+    background:var(--teal-soft);
+    display:flex;gap:1.4vh;align-items:flex-start;
+  }
+  .how .card.alt{background:#f1f5f9;}
+  .how .ic{
+    flex:0 0 auto;width:4.6vh;height:4.6vh;border-radius:1vh;
+    background:#fff;color:var(--teal);display:flex;align-items:center;justify-content:center;
+  }
+  .how .ic svg{width:2.6vh;height:2.6vh;}
+  .factsline{display:none;}
+  .how .k{font-size:1.7vh;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);}
+  .how .v{font-size:2.05vh;font-weight:600;line-height:1.35;color:var(--ink);}
+
+  /* ---------- QR ---------- */
+  .qr{
+    flex:0 0 auto;width:34vh;
+    background:#fff;border:.26vh dashed var(--teal);
+    border-radius:2vh;padding:2.6vh;
+    display:flex;flex-direction:column;align-items:center;gap:1.6vh;
+    text-align:center;
+  }
+  .qr .box{
+    width:26vh;height:26vh;border-radius:1.4vh;background:#fff;
+    border:.2vh solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    padding:1.4vh;
+  }
+  .qr .box img{width:100%;height:100%;object-fit:contain;display:block;}
+  .qr .box svg{width:12vh;height:12vh;}
+  .qr .box span{font-size:2vh;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+  .qr .cta{font-size:2.5vh;font-weight:800;color:var(--ink);line-height:1.2;}
+  .qr .sub{font-size:1.85vh;font-weight:600;color:var(--slate);line-height:1.35;}
+
+  /* ============================================================
+     MODO PANORÁMICO  (hueco grande del dashboard ~1290 x 390)
+     ============================================================ */
+  @media (max-height:520px){
+    .stage{padding:2.5vh 1.6vw;flex-direction:row;align-items:center;}
+    .snow{display:none;}
+    header{display:none;}
+    .flake{display:block;}
+    .flake.f1{top:1.8vh;left:46vw;width:7vh;}
+    .flake.f2{bottom:1.8vh;left:1.2vw;width:5.6vh;}
+    .flake.f3{bottom:2.2vh;left:38vw;width:5vh;}
+    main{flex:1 1 auto;align-items:center;gap:2vw;min-height:0;width:100%;}
+    .left{justify-content:center;gap:2.6vh;min-width:0;}
+    h1{font-size:17vh;line-height:1;white-space:nowrap;}
+    .tagline,.factsline{display:none;}
+    .facts{display:flex;gap:1.2vw;}
+    .fact{padding:1.8vh 1vw;border-radius:1.4vh;gap:1.4vh;}
+    .fact .ic{width:9vh;height:9vh;border-radius:1.2vh;}
+    .fact .ic svg{width:5vh;height:5vh;}
+    .fact .k{font-size:3vh;}
+    .fact .v{font-size:5vh;line-height:1.15;}
+    .fact .v small{font-size:3.5vh;}
+    .deadline{padding:1.8vh 1.4vw;border-radius:1.4vh;gap:1.6vh;}
+    .deadline .ic{width:9vh;height:9vh;}
+    .deadline .ic svg{width:5vh;height:5vh;}
+    .deadline .t{font-size:5vh;}
+    .deadline .t small{font-size:3.4vh;}
+    .how{display:flex;gap:1.2vw;}
+    .how .card{padding:1.6vh 1vw;border-radius:1.4vh;gap:1.4vh;}
+    .how .ic{width:8vh;height:8vh;border-radius:1vh;}
+    .how .ic svg{width:4.6vh;height:4.6vh;}
+    .how .k{font-size:3vh;}
+    .how .v{font-size:3.6vh;line-height:1.3;}
+    .qr{width:fit-content;flex:0 0 auto;flex-direction:column;align-items:center;gap:1.4vh;padding:2vh;text-align:center;border-radius:1.8vh;}
+    .qr .box{width:62vh;height:62vh;flex:0 0 auto;padding:1.2vh;}
+    .qr .col{display:flex;flex-direction:column;gap:.8vh;align-items:center;}
+    .qr .cta{font-size:5.4vh;white-space:nowrap;}
+    .qr .sub{display:none;}
+  }
+
+  /* ============================================================
+     MODO MINI  (hueco pequeño del dashboard ~530 x 210)
+     ============================================================ */
+  @media (max-height:260px),(max-width:640px){
+    .stage{padding:3vh 3vw;}
+    header{display:none;}
+    .snow,.flake{display:none;}
+    main{gap:3vw;width:100%;}
+    .left{gap:2.2vh;min-width:0;}
+    h1{font-size:9vh;white-space:nowrap;}
+    .tagline,.facts,.factsline,.how{display:none;}
+    .deadline{padding:1.8vh 2.4vw;border-radius:2vh;gap:2vw;}
+    .deadline .ic{width:9vh;height:9vh;}
+    .deadline .ic svg{width:5vh;height:5vh;}
+    .deadline .t{font-size:4.4vh;white-space:nowrap;}
+    .deadline .t .full{display:none;}
+    .deadline .t .short{display:inline;}
+    .deadline .t small{display:none;}
+    .qr .box span{display:none;}
+    .qr{width:auto;flex:0 0 auto;flex-direction:row;align-items:center;gap:2.6vw;padding:2.2vh 2.6vw;text-align:left;border-radius:2vh;}
+    .qr .box{width:62vh;height:62vh;flex:0 0 auto;padding:1vh;}
+    .qr .cta{font-size:3.6vh;white-space:nowrap;}
+    .qr .sub{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <svg class="snow s1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M4 4l16 16M20 4L4 20M12 6l-2-2m2 2 2-2M12 18l-2 2m2-2 2 2M6 12l-2-2m2 2-2 2M18 12l2-2m-2 2 2 2"/></svg>
+  <svg class="snow s2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M4 4l16 16M20 4L4 20M12 6l-2-2m2 2 2-2M12 18l-2 2m2-2 2 2M6 12l-2-2m2 2-2 2M18 12l2-2m-2 2 2 2"/></svg>
+  <svg class="snow s3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M4 4l16 16M20 4L4 20M12 6l-2-2m2 2 2-2M12 18l-2 2m2-2 2 2M6 12l-2-2m2 2-2 2M18 12l2-2m-2 2 2 2"/></svg>
+  <svg class="snow s4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M4 4l16 16M20 4L4 20M12 6l-2-2m2 2 2-2M12 18l-2 2m2-2 2 2M6 12l-2-2m2 2-2 2M18 12l2-2m-2 2 2 2"/></svg>
+  <img class="flake f1" src="snow.png" alt="">
+  <img class="flake f2" src="snow.png" alt="">
+  <img class="flake f3" src="snow.png" alt="">
+
+  <header>
+    <img src="logo2.png" alt="Isopan">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.6L19 9l-5.2 1.4L12 16l-1.8-5.6L5 9l5.2-1.4zM19 15l.9 2.6L22 18.5l-2.1.9L19 22l-.9-2.6L16 18.5l2.1-.9z"/></svg>
+      Cena de empresa
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.6L19 9l-5.2 1.4L12 16l-1.8-5.6L5 9l5.2-1.4zM19 15l.9 2.6L22 18.5l-2.1.9L19 22l-.9-2.6L16 18.5l2.1-.9z"/></svg>
+    </div>
+  </header>
+
+  <main>
+    <div class="left">
+      <h1>Cena de <span class="accent">Navidad</span> 2026</h1>
+      <p class="factsline">Viernes 11 de diciembre <span class="sep">·</span> L'Orangerie <span class="sep">·</span> 20:30 h <small>(hora por confirmar)</small></p>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+          <div><div class="k">Fecha</div><div class="v">Viernes 11 de diciembre</div></div>
+        </div>
+        <div class="fact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <div><div class="k">Lugar</div><div class="v">L'Orangerie <small class="br">(como el año pasado)</small></div></div>
+        </div>
+        <div class="fact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+          <div><div class="k">Hora</div><div class="v">20:30 h <small>(por confirmar)</small></div></div>
+        </div>
+      </div>
+
+      <div class="deadline">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <div class="t"><span class="full">Confirma tu asistencia antes del viernes 20 de noviembre</span><span class="short">Confirma antes del 20 de noviembre</span>
+          <small>Asistencia, alergias/intolerancias y preferencias (vegano / vegetariano)</small>
+        </div>
+      </div>
+
+      <div class="how">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M18 18h3v3h-3z"/></svg></div>
+          <div><div class="k">Producción</div><div class="v">Escanea el código QR con el móvil y rellena tus datos.</div></div>
+        </div>
+        <div class="card alt">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg></div>
+          <div><div class="k">Oficinas</div><div class="v">A través del enlace del correo electrónico o del QR.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="qr">
+      <div class="box">
+        <img src="qr.png" alt="Código QR para confirmar asistencia a la cena">
+      </div>
+      <div class="col">
+        <div class="cta">Escanea y apúntate</div>
+        <div class="sub">Nombre y apellidos, asistencia, alergias/intolerancias y preferencias alimentarias.</div>
+      </div>
+    </aside>
+  </main>
+</div>
+</body>
+</html>
