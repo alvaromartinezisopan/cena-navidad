@@ -137,6 +137,17 @@
   .qr .cta{font-size:2.5vh;font-weight:800;color:var(--ink);line-height:1.2;}
   .qr .sub{font-size:1.85vh;font-weight:600;color:var(--slate);line-height:1.35;}
 
+
+  /* ---------- muestra ULTIMO DIA ---------- */
+  .deadline.ultimo{background:#fdeceb;border-color:var(--red);}
+  .deadline.ultimo .ic{background:var(--red);}
+  .deadline.ultimo .t small{color:#8c2a24;}
+  .pill{
+    flex:0 0 auto;background:var(--red);color:#fff;
+    font-weight:800;font-size:2.2vh;letter-spacing:.14em;text-transform:uppercase;
+    padding:1.1vh 1.8vh;border-radius:999px;white-space:nowrap;
+  }
+
   /* ============================================================
      MODO PANORÁMICO  (hueco grande del dashboard ~1290 x 390)
      ============================================================ */
@@ -164,6 +175,7 @@
     .deadline .ic svg{width:5vh;height:5vh;}
     .deadline .t{font-size:5vh;}
     .deadline .t small{font-size:3.4vh;}
+    .pill{font-size:4.4vh;padding:1.8vh 2.6vh;}
     .how{display:flex;gap:1.2vw;}
     .how .card{padding:1.6vh 1vw;border-radius:1.4vh;gap:1.4vh;}
     .how .ic{width:8vh;height:8vh;border-radius:1vh;}
@@ -195,6 +207,7 @@
     .deadline .t .full{display:none;}
     .deadline .t .short{display:inline;}
     .deadline .t small{display:none;}
+    .pill{display:none;}
     .qr .box span{display:none;}
     .qr{width:auto;flex:0 0 auto;flex-direction:row;align-items:center;gap:2.6vw;padding:2.2vh 2.6vw;text-align:left;border-radius:2vh;}
     .qr .box{width:62vh;height:62vh;flex:0 0 auto;padding:1vh;}
@@ -243,9 +256,10 @@
         </div>
       </div>
 
-      <div class="deadline">
+      <div class="deadline ultimo">
+        <div class="pill">¡Último día!</div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <div class="t"><span class="full">Confirma tu asistencia hasta el viernes 20 de noviembre a las 15:00 h</span><span class="short">Hasta el 20/11 a las 15:00 h</span>
+        <div class="t"><span class="full">Hoy es el último día: confirma tu asistencia antes de las 15:00 h</span><span class="short">¡Último día! Hasta las 15:00 h</span>
           <small>Asistencia, alergias/intolerancias y preferencias (vegano / vegetariano)</small>
         </div>
       </div>
